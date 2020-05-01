@@ -9,7 +9,7 @@ class Mode:
 
 class Modes:
   def __init__(self, led):
-    blink_mode = Mode("blink", lambda led: led.blink(0.5, 0.5))
+    blink_mode = Mode("blink", lambda led: led.blink(0.2, 0.2))
     enable_mode = Mode("enable", lambda led: led.on(), blink_mode)
     disable_mode = Mode("disable", lambda led: led.off(), enable_mode)
     blink_mode.next = disable_mode
@@ -17,8 +17,8 @@ class Modes:
     self.led = led
 
   def toggle(self):
-    self.current.operation(self.led)
     self.current = self.current.next
+    self.current.operation(self.led)
 
 LED_PIN = 18
 BUTTON_PIN = 24
