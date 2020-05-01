@@ -7,7 +7,12 @@ BUTTON_PIN = 24
 led = LED(LED_PIN)
 button = Button(BUTTON_PIN)
 
-button.when_pressed = led.on
-button.when_released = led.off
+def toggle_led():
+  if (led.is_active):
+    led.off()
+  else:
+    led.on()
+
+button.when_pressed = toggle_led
 
 pause()
