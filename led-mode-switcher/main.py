@@ -3,18 +3,19 @@
 
 from gpiozero import LED, Button
 from signal import pause
+from typing import Callable
 
 LED_PIN = 18
 BUTTON_PIN = 24
 
 class Mode:
-  def __init__(self, name, operation, next = None):
+  def __init__(self, name: str, operation: Callable, next = None):
     self.name = name
     self.operation = operation
     self.next = next
 
 class Modes:
-  def __init__(self, led):
+  def __init__(self, led: LED):
     blink_mode = Mode("blinking", lambda led: led.blink(0.2, 0.2))
     enable_mode = Mode("enabled", lambda led: led.on(), blink_mode)
     disable_mode = Mode("disabled", lambda led: led.off(), enable_mode)
@@ -37,5 +38,5 @@ def run():
 
   pause()
 
-if __name__ == "main__":
+if __name__ == "__main__":
   run()
