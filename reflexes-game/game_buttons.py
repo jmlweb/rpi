@@ -3,14 +3,17 @@ from game_typings import Options
 
 
 class GameButtons:
+    """
+    Maps native button events to cb
+    """
     def __init__(self, options: Options, cb: Callable):
         self.options = options
         self.cb = cb
-        for i in self.options.keys():
-            self.options[i]["button"].when_pressed = self.on_press
+        for option in self.options.values():
+            option["button"].when_pressed = self.on_press
 
     def on_press(self, button):
-        for i in self.options.keys():
-            if self.options[i]["button"] == button:
+        for idx, option in self.options.items():
+            if option["button"] = button:
                 self.cb(i)
                 break

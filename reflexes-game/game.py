@@ -23,7 +23,5 @@ class Game:
         self.on_new_question()
 
     def process_answer(self, answer):
-        if (self.current_question == answer):
-            self.on_ok()
-        else:
-            self.on_ko()
+        fn = self.on_ok if (self.current_question == answer) else self.on_ko
+        fn()

@@ -38,7 +38,6 @@ class Main:
         self.game_result.reset()
         new_timeout = randint(DELAY_MIN, DELAY_MAX)
         sleep(new_timeout)
-        print("choose question ")
         self.game.choose_question()
 
     def on_new_question(self):
@@ -48,10 +47,11 @@ class Main:
     def on_ok(self):
         self.game_indicators.reset()
         total_time = time() - self.starting_time
-        if total_time < TIME_LIMIT:
-            self.game_result.success()
-        else:
-            self.game_result.warn()
+        is_success = total_time < TIME_LIMIT
+        fn = self.game_result.success if (
+            is_success
+        ) else self.game_result.warn
+        fn()
         self.new_turn()
 
     def on_ko(self):
@@ -74,4 +74,5 @@ def run():
     pause()
 
 
-run()
+if __name__ == "__main__":
+    run()
