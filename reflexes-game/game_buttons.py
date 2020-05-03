@@ -14,6 +14,6 @@ class GameButtons:
 
     def on_press(self, button):
         for idx, option in self.options.items():
-            if option["button"] = button:
+            if option["button"] == button:
                 self.cb(i)
                 break
