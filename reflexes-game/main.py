@@ -30,14 +30,14 @@ class Main:
         self.new_turn()
 
     def new_turn(self):
+        self.game_indicators.reset()
+        self.game_result.reset()
         new_timeout = randint(DELAY_MIN, DELAY_MAX)
         sleep(new_timeout)
         print("choose question ")
         self.game.choose_question()
 
     def on_new_question(self):
-        self.game_indicators.reset()
-        self.game_result.reset()
         self.game_indicators.select(self.game.current_question)
         self.starting_time = time()
 
