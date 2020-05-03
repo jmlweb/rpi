@@ -13,7 +13,7 @@ class GameResult:
         self.result_led.color = Color("red")
 
     def warn(self):
-        self.result_led.blink(0.2, 0.2, 0.1, 0.1, Color("#ffa500"))
+        self.result_led.blink(0.1, 0.1, 0.05, 0.05, Color("#ffa500"))
 
     def success(self):
         self.result_led.color = Color("green")

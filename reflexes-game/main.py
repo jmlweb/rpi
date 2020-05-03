@@ -18,6 +18,8 @@ PIN_BUTTON_B = 16
 
 PIN_RGBLED = [22, 23, 24]
 
+TIME_LIMIT = 1.5
+
 
 class Main:
     def __init__(self, options, result_led):
@@ -45,7 +47,7 @@ class Main:
     def on_ok(self):
         self.game_indicators.reset()
         total_time = time() - self.starting_time
-        if total_time < 1.5:
+        if total_time < TIME_LIMIT:
             self.game_result.success()
         else:
             self.game_result.warn()
