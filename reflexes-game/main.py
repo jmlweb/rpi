@@ -8,7 +8,7 @@ from game_indicators import GameIndicators
 from game_result import GameResult
 from game import Game
 
-DELAY_MIN = 1
+DELAY_MIN = 0
 DELAY_MAX = 7
 
 PIN_LED_A = 18
@@ -30,6 +30,7 @@ class Main:
         self.new_turn()
 
     def new_turn(self):
+        sleep(1)
         self.game_indicators.reset()
         self.game_result.reset()
         new_timeout = randint(DELAY_MIN, DELAY_MAX)
