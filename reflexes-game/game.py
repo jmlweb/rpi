@@ -15,8 +15,6 @@ class Game:
 
     def process_answer(self, answer):
         if (self.current_question == answer):
-            self.answer_ok()
             self.on_ok()
         else:
-            self.answer_ko()
             self.on_ko()
