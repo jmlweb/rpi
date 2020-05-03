@@ -1,4 +1,8 @@
 {
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
   "python.linting.enabled": true,
-  "prettier.tabWidth": 4
+  "prettier.tabWidth": 4,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pycodestyleEnabled": true
 }

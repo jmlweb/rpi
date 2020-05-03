@@ -1,4 +1,4 @@
-#THIS PROJECT IMPLEMENTS A LED SWITCHER
+# THIS PROJECT IMPLEMENTS A LED SWITCHER
 # It has 3 modes: disabled, enabled or blinking
 
 from gpiozero import LED, Button
@@ -8,35 +8,38 @@ from typing import Callable
 LED_PIN = 18
 BUTTON_PIN = 24
 
+
 class Mode:
-  def __init__(self, name: str, operation: Callable, next = None):
-    self.name = name
-    self.operation = operation
-    self.next = next
+    def __init__(self, name: str, operation: Callable, next=None):
+        self.name = name
+        self.operation = operation
+        self.next = next
+
 
 class Modes:
-  def __init__(self, led: LED):
-    blink_mode = Mode("blinking", lambda led: led.blink(0.2, 0.2))
-    enable_mode = Mode("enabled", lambda led: led.on(), blink_mode)
-    disable_mode = Mode("disabled", lambda led: led.off(), enable_mode)
-    blink_mode.next = disable_mode
-    self.current = disable_mode
-    self.led = led
+    def __init__(self, led: LED):
+        blink_mode = Mode("blinking", lambda led: led.blink(0.2, 0.2))
+        enable_mode = Mode("enabled", lambda led: led.on(), blink_mode)
+        disable_mode = Mode("disabled", lambda led: led.off(), enable_mode)
+        blink_mode.next = disable_mode
+        self.current = disable_mode
+        self.led = led
 
-  def toggle(self):
-    self.current = self.current.next
-    self.current.operation(self.led)
+    def toggle(self):
+        self.current = self.current.next
+        self.current.operation(self.led)
 
 
 def run():
-  led = LED(LED_PIN)
-  button = Button(BUTTON_PIN)
+    led = LED(LED_PIN)
+    button = Button(BUTTON_PIN)
 
-  modes = Modes(led)
+    modes = Modes(led)
 
-  button.when_pressed = modes.toggle
+    button.when_pressed = modes.toggle
 
-  pause()
+    pause()
+
 
 if __name__ == "__main__":
-  run()
+    run()
