@@ -28,7 +28,6 @@ class Main:
         self.game = Game(options, self.on_new_question, self.on_ok, self.on_ko)
         self.game_buttons = GameButtons(options, self.game.process_answer)
         self.new_turn()
-        self.result_led = result_led
 
     def new_turn(self):
         new_timeout = randint(DELAY_MIN, DELAY_MAX)
@@ -46,14 +45,14 @@ class Main:
         self.game_indicators.reset()
         total_time = time() - self.starting_time
         if total_time < 1.5:
-            self.result_led.success()
+            self.game_result.success()
         else:
-            self.result_led.warn()
+            self.game_result.warn()
         self.new_turn()
 
     def on_ko(self):
         self.game_indicators.reset()
-        self.result_led.error()
+        self.game_result.error()
         self.new_turn()
 
 
