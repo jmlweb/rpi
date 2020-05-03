@@ -30,8 +30,8 @@ class Main:
         self.new_turn()
 
     def new_turn(self):
-        sleep(1)
         self.game_indicators.reset()
+        sleep(1)
         self.game_result.reset()
         new_timeout = randint(DELAY_MIN, DELAY_MAX)
         sleep(new_timeout)
@@ -52,7 +52,6 @@ class Main:
         self.new_turn()
 
     def on_ko(self):
-        self.game_indicators.reset()
         self.game_result.error()
         self.new_turn()
 

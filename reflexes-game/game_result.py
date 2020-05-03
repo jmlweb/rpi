@@ -9,7 +9,7 @@ class GameResult:
         self.result_led.off()
 
     def error(self):
-        self.result_led_color = Color("red")
+        self.result_led.color = Color("red")
 
     def warn(self):
         self.result_led.color = Color("orange")
