@@ -7,6 +7,6 @@ class GameButtons:
 
     def on_press(self, button):
         for i in self.options.keys():
-            if options[i]["button"] == button:
+            if self.options[i]["button"] == button:
                 self.cb(i)
                 break
