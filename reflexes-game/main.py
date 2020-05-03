@@ -45,14 +45,14 @@ class Main:
         self.game_indicators.reset()
         total_time = time() - self.starting_time
         if total_time < 1.5:
-            result_led.success()
+            self.result_led.success()
         else:
-            result_led.warn()
+            self.result_led.warn()
         self.new_turn()
 
     def on_ko(self):
         self.game_indicators.reset()
-        result_led.error()
+        self.result_led.error()
         self.new_turn()
 
 
