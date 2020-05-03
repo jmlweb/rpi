@@ -1,5 +1,9 @@
+from typing import Callable
+from game_typings import Options
+
+
 class GameButtons:
-    def __init__(self, options, cb):
+    def __init__(self, options: Options, cb: Callable):
         self.options = options
         self.cb = cb
         for i in self.options.keys():

@@ -3,6 +3,7 @@ from signal import pause
 from random import randint
 from gpiozero import LED, RGBLED, Button
 
+from game_typings import Options
 from game_buttons import GameButtons
 from game_indicators import GameIndicators
 from game_result import GameResult
@@ -22,7 +23,7 @@ TIME_LIMIT = 1.5
 
 
 class Main:
-    def __init__(self, options, result_led):
+    def __init__(self, options: Options, result_led: RGBLED):
         self.starting_time = 0
         self.options = options
         self.game_indicators = GameIndicators(options)

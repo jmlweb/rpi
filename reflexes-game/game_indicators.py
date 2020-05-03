@@ -1,5 +1,8 @@
+from game_typings import Options
+
+
 class GameIndicators:
-    def __init__(self, options):
+    def __init__(self, options: Options):
         self.options = options
 
     def reset(self):

@@ -1,8 +1,17 @@
+from typing import Callable
 from random import choice
+
+from game_typings import Options
 
 
 class Game:
-    def __init__(self, options, on_new_question, on_ok, on_ko):
+    def __init__(
+        self,
+        options: Options,
+        on_new_question: Callable,
+        on_ok: Callable,
+        on_ko: Callable
+    ):
         self.questions = list(options.keys())
         self.current_question = None
         self.on_new_question = on_new_question
