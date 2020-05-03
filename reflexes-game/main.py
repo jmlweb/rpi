@@ -28,6 +28,7 @@ class Main:
         self.game = Game(options, self.on_new_question, self.on_ok, self.on_ko)
         self.game_buttons = GameButtons(options, self.game.process_answer)
         self.new_turn()
+        self.result_led = result_led
 
     def new_turn(self):
         new_timeout = randint(DELAY_MIN, DELAY_MAX)
