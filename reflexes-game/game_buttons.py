@@ -10,9 +10,9 @@ class GameButtons:
         self.options = options
         self.cb = cb
         for option in self.options.values():
-            option["button"].when_pressed = self.on_press
+            option["button"].when_pressed = self._on_press
 
-    def on_press(self, button):
+    def _on_press(self, button):
         for idx, option in self.options.items():
             if option["button"] == button:
                 self.cb(idx)

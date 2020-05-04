@@ -30,9 +30,9 @@ class Main:
         self.game_result = GameResult(result_led)
         self.game = Game(options, self.on_new_question, self.on_ok, self.on_ko)
         self.game_buttons = GameButtons(options, self.game.process_answer)
-        self.new_turn()
+        self._new_turn()
 
-    def new_turn(self):
+    def _new_turn(self):
         self.game_indicators.reset()
         sleep(1)
         self.game_result.reset()
@@ -52,11 +52,11 @@ class Main:
             is_success
         ) else self.game_result.warn
         fn()
-        self.new_turn()
+        self._new_turn()
 
     def on_ko(self):
         self.game_result.error()
-        self.new_turn()
+        self._new_turn()
 
 
 def run():
