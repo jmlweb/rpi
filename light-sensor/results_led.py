@@ -7,5 +7,5 @@ class ResultsLed:
         self.conversion = 1 / 100
 
     def update(self, light_value):
-        decimal_time = light_value * conversion
+        decimal_time = light_value * self.conversion
         self.led.pulse(decimal_time, decimal_time)
