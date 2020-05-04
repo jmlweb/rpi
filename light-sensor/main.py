@@ -2,6 +2,7 @@
 # From the code for the Box 1 kit for the Raspberry Pi by MonkMakes.com
 
 from gpiozero import PWMLED, Buzzer
+from gpiozero.tones import Tone
 from PiAnalog import *
 import time
 import math
@@ -23,7 +24,7 @@ def update_reading():
     light = light_from_r(p.read_resistance())
     decimal_time = light / 100
     led.pulse(decimal_time, decimal_time)
-    bz.beep(decimal_time, decimal_time)
+    bz.play(Tone("A4"))
     reading_str = "{:.0f}".format(light)
     light_text = reading_str
     print(light_text)
