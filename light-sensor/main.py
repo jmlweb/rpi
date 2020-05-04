@@ -14,25 +14,20 @@ class App:
         self.lightReader = LightReader()
         self.resultsBuzzer = ResultsBuzzer(PIN_BUZZER)
         self.resultsLed = ResultsLed(PIN_LED)
+        self.last_value = self.lightReader.value
         self.update_reading()
-        self.last_value = None
 
     def update_reading(self):
-        while True:
-            current_value = self.lightReader.value
-            if current_value != self.last_value:
-                self.resultsBuzzer.update(current_value)
-                self.resultsLed.update(current_value)
-                self.last_value = current_value
-            reading_str = "{:.0f}".format(current_value)
-            light_text = reading_str
-            print(light_text)
-            time.sleep(1)
-            self.update_reading()
-
-
-def run():
-    App()
+        current_value = self.lightReader.value
+        if current_value != self.last_value:
+            self.resultsBuzzer.update(current_value)
+            self.resultsLed.update(current_value)
+            self.last_value = current_value
+        reading_str = "{:.0f}".format(current_value)
+        light_text = reading_str
+        print(light_text)
+        time.sleep(1)
+        self.update_reading()
 
 
 if __name__ == "__main__":
