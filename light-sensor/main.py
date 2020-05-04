@@ -7,7 +7,7 @@ import time
 import math
 
 p = PiAnalog()
-led = LED(25)
+led = PWMLED(25)
 
 
 def light_from_r(R):
@@ -20,7 +20,7 @@ def light_from_r(R):
 
 def update_reading():
     light = light_from_r(p.read_resistance())
-    led.value = light / 100
+    led.pulse(light / 100, light / 100)
     reading_str = "{:.0f}".format(light)
     light_text = reading_str
     print(light_text)
