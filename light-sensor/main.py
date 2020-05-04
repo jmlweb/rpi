@@ -1,13 +1,14 @@
 # 08_light_meter.py
 # From the code for the Box 1 kit for the Raspberry Pi by MonkMakes.com
 
-from gpiozero import PWMLED
+from gpiozero import PWMLED, Buzzer
 from PiAnalog import *
 import time
 import math
 
 p = PiAnalog()
 led = PWMLED(25)
+bz = Buzzer(6)
 
 
 def light_from_r(R):
@@ -20,7 +21,9 @@ def light_from_r(R):
 
 def update_reading():
     light = light_from_r(p.read_resistance())
-    led.pulse(light / 100, light / 100)
+    decimal_time = light / 100
+    led.pulse(decimal_time, decimal_time)
+    bz.beep(decimal_time, decimal_time)
     reading_str = "{:.0f}".format(light)
     light_text = reading_str
     print(light_text)
