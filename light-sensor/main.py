@@ -25,4 +25,4 @@ def update_reading():
 
 while True:
     update_reading()
-    time.sleep(200)
+    time.sleep(1)
