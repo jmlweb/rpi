@@ -8,24 +8,32 @@ from results_led import ResultsLed
 PIN_LED = 25
 PIN_BUZZER = 6
 
-lr = LightReader()
-rb = ResultsBuzzer(PIN_BUZZER)
-rl = ResultsLed(PIN_LED)
 
-last_value = None
+class App:
+    def __init__(self):
+        self.lightReader = LightReader()
+        self.resultsBuzzer = ResultsBuzzer(PIN_BUZZER)
+        self.resultsLed = ResultsLed(PIN_LED)
+        self.update_reading()
+        self.last_value = None
+
+    def update_reading(self):
+        while True:
+            current_value = self.lightReader.value
+            if current_value != self.last_value:
+                self.resultsBuzzer.update(current_value)
+                self.resultsLed.update(current_value)
+                self.last_value = current_value
+            reading_str = "{:.0f}".format(current_value)
+            light_text = reading_str
+            print(light_text)
+            time.sleep(1)
+            self.update_reading()
 
 
-def update_reading():
-    current_value = lr.value
-    if current_value != last_value:
-        rl.update(current_value)
-        rb.update(current_value)
-        last_value = current_value
-    reading_str = "{:.0f}".format(current_value)
-    light_text = reading_str
-    print(light_text)
+def run():
+    App()
 
 
-while True:
-    update_reading()
-    time.sleep(2)
+if __name__ == "__main__":
+    run()
