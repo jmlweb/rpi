@@ -1,7 +1,7 @@
 # 08_light_meter.py
 # From the code for the Box 1 kit for the Raspberry Pi by MonkMakes.com
 
-from gpiozero import PWMLED, Buzzer
+from gpiozero import PWMLED, TonalBuzzer
 from gpiozero.tones import Tone
 from PiAnalog import *
 import time
@@ -9,7 +9,7 @@ import math
 
 p = PiAnalog()
 led = PWMLED(25)
-bz = Buzzer(6)
+bz = TonalBuzzer(6)
 
 
 def light_from_r(R):
