@@ -12,11 +12,15 @@ lr = LightReader()
 rb = ResultsBuzzer(PIN_BUZZER)
 rl = ResultsLed(PIN_LED)
 
+last_value = None
+
 
 def update_reading():
     current_value = lr.value
-    rl.update(current_value)
-    rb.update(current_value)
+    if current_value != last_value:
+        rl.update(current_value)
+        rb.update(current_value)
+        last_value = current_value
     reading_str = "{:.0f}".format(current_value)
     light_text = reading_str
     print(light_text)
@@ -24,4 +28,4 @@ def update_reading():
 
 while True:
     update_reading()
-    time.sleep(1)
+    time.sleep(2)
