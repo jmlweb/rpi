@@ -1,3 +1,8 @@
+from gpiozero import PWMLED, TonalBuzzer
+from gpiozero.tones import Tone
+import time
+import math
+
 from light_reader import LightReader
 
 PIN_LED = 25
