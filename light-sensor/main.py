@@ -21,7 +21,7 @@ def update_reading():
     decimal_time = current_value / 100
     led.pulse(decimal_time, decimal_time)
     rb.play(current_value)
-    reading_str = "{:.0f}".format(lr.vale)
+    reading_str = "{:.0f}".format(lr.value)
     light_text = reading_str
     print(light_text)
 
