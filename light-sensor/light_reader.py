@@ -2,6 +2,7 @@ from PiAnalog import *
 
 
 class LightReader:
+    # LIGHT READER USES PINS 18 AND 23 INTERNALLY
     def __init__(self):
         self.p = PiAnalog()
 
