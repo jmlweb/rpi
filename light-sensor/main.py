@@ -1,15 +1,24 @@
-# 08_light_meter.py
-# From the code for the Box 1 kit for the Raspberry Pi by MonkMakes.com
-
 from gpiozero import PWMLED, TonalBuzzer
 from gpiozero.tones import Tone
 from PiAnalog import *
 import time
 import math
 
+
+class Reader:
+    def __init__(self, p: PiAnalog):
+        self.p = p
+
+    @property light
+    def light(self):
+        r = self.p.read_resistance()
+        return math.log(1000000.0/r) * 10.0
+
+
 p = PiAnalog()
 led = PWMLED(25)
 bz = TonalBuzzer(6)
+reader = Reader(p)
 
 
 def light_from_r(R):
@@ -21,7 +30,8 @@ def light_from_r(R):
 
 
 def update_reading():
-    light = light_from_r(p.read_resistance())
+    global reader
+    light = reader.light
     decimal_time = light / 100
     led.pulse(decimal_time, decimal_time)
     bz.play(Tone("A4"))
