@@ -1,9 +1,28 @@
-from gpiozero import LightSensor
+# 08_light_meter.py
+# From the code for the Box 1 kit for the Raspberry Pi by MonkMakes.com
 
-sensor = LightSensor(18)
+from PiAnalog import *
+import time
+import math
 
-while True:
-    sensor.wait_for_light()
-    print("It's light! :)")
-    sensor.wait_for_dark()
-    print("It's dark :(")
+p = PiAnalog()
+
+
+def light_from_r(R):
+    # Log the reading to compress the range
+    return math.log(1000000.0/R) * 10.0
+
+# group together all of the GUI code
+# Update the reading
+
+
+def update_reading():
+    light = light_from_r(p.read_resistance())
+    reading_str = "{:.0f}".format(light)
+    light_text = reading_str
+    print(light_text)
+    time.sleep(200)
+    update_reading()
+
+
+update_reading()
