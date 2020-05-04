@@ -23,12 +23,9 @@ class App:
             self.resultsBuzzer.update(current_value)
             self.resultsLed.update(current_value)
             self.last_value = current_value
-        reading_str = "{:.0f}".format(current_value)
-        light_text = reading_str
-        print(light_text)
         time.sleep(1)
         self.update_reading()
 
 
 if __name__ == "__main__":
-    run()
+    App()
