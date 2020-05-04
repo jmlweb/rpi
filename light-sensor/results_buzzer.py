@@ -10,5 +10,5 @@ class ResultsBuzzer:
         # light_value goes from 0 to 100,
         # so we need to convert it first
         conversion = 127 / 100
-        value = round(light_value * range)
+        value = round(light_value * conversion)
         self.buzzer.play(Tone(value))
