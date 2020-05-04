@@ -21,8 +21,8 @@ def update_reading():
     reading_str = "{:.0f}".format(light)
     light_text = reading_str
     print(light_text)
-    time.sleep(200)
+
+
+while True:
     update_reading()
-
-
-update_reading()
+    time.sleep(200)
