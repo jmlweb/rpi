@@ -9,7 +9,7 @@ class ResultsBuzzer:
         self.max = Tone(self.buzzer.max_tone).frequency
         self.conversion = (self.max - self.min) / 100
 
-    def play(self, light_value):
+    def update(self, light_value):
         # light_value goes from 0 to 100,
         # so we need to convert it first
         value = round(self.max - light_value * self.conversion)
